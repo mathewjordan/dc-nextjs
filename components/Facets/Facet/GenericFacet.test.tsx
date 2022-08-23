@@ -2,11 +2,11 @@ import { render, screen } from "@/test-utils";
 import GenericFacet from "./GenericFacet";
 import { response } from "@/mocks/use-fetch-api-response";
 
-jest.mock("@/hooks/useFetchApiData", () => {
+jest.doMock("@/hooks/useFetchApiData", () => {
   return jest.fn(() => response);
 });
 
-describe("Facet GenericFacet UI component", () => {
+xdescribe("Facet GenericFacet UI component", () => {
   function setup() {
     return render(
       <GenericFacet
