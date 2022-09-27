@@ -11,7 +11,7 @@ interface CollectionListProps {
 }
 
 const CollectionList: NextPage<CollectionListProps> = ({ collections }) => {
-  console.log(collections);
+  // console.log(collections);
 
   return (
     <Layout>
