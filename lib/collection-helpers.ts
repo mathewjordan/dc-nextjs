@@ -1,4 +1,8 @@
-import { ApiCollectionResponse, ApiSearchResponse } from "@/types/api/response";
+import {
+  ApiCollectionListResponse,
+  ApiCollectionResponse,
+  ApiSearchResponse,
+} from "@/types/api/response";
 import { CollectionShape } from "@/types/components/collections";
 import { getAPIData } from "@/lib/dc-api";
 
@@ -14,6 +18,19 @@ export async function getCollection(
   } catch (err) {
     console.error("Error getting the work", id);
     return null;
+  }
+}
+
+export async function getCollectionList(): Promise<CollectionShape[] | null> {
+  try {
+    const response = await getAPIData<ApiCollectionListResponse>({
+      method: "GET",
+      url: `${process.env.NEXT_PUBLIC_DCAPI_ENDPOINT}/collections`,
+    });
+    return response?.data ? response.data : null;
+  } catch (err) {
+    console.error("Error getting all Collection Ids", err);
+    return [];
   }
 }
 
