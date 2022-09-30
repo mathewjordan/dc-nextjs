@@ -62,6 +62,8 @@ export const buildPres3Manifest = async (
       },
     ]);
     manifest.requiredStatement?.value.none?.push(work.terms_of_use);
+
+    console.log(`items`, items);
     manifest.items = items;
   } catch (err) {
     console.error("Error building manifest locally", err);
@@ -108,7 +110,7 @@ export const getCanvases = async (id: string) => {
 
     return item;
   });
-  return converted;
+  return converted.items;
 };
 
 export const getInfoResponse = (canvas: Canvas) => {
